@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vue App</title>
+    <script src="../vue.js"></script>
+    <!-- <script src="https://unpkg.com/vue"></script> -->
+    <!-- <link rel="stylesheet" href="http://davidtkatz.com/public_css/vue.css"> -->
+  </head>
+  <body>
+    <div id="app">
+      Hello World
+      <button class="vue-btn" @click="increment">Increment</button>
+      <p>{{ count }}</p>
+    </div>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          count: 0,
+        },
+        methods: {
+          alertTime() {
+            alert(`The time is ${Date.now().toLocaleString()}`);
+          },
+          increment() {
+            this.count++;
+          },
+        },
+        created() {
+          // IT RUNS WHEN THE COMPONENT IS CREATED
+          // AND IT HASN'T EVEN RENDERED THE ACTUAL TEMPLATE
+          this.alertTime();
+        },
+        mounted() {
+          this.alertTime();
+        },
+        updated() {
+          console.log(this.count);
+        },
+      });
+    </script>
+  </body>
+</html>
